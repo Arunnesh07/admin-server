@@ -1,1 +1,90 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Panel - Add User</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+</head>
+<body>
+  <div class="container">
+    <h1>Add New Employee</h1>
+    <p class="description">Submit employee name, ID, and face image</p>
+
+    <form id="addUserForm" class="form">
+      <input type="text" id="employeeId" placeholder="Employee ID" required />
+      <input type="text" id="fullName" placeholder="Full Name" required />
+      <input type="file" id="faceImage" accept="image/*" required />
+      <button type="submit">Add User</button>
+    </form>
+
+    <div id="adminStatus"></div>
+
+    <hr>
+
+    <div style="margin-bottom: 10px;">
+      <input type="text" id="searchInput" placeholder="Search by Employee ID or Name" />
+      <ul id="searchSuggestions" style="list-style: none; padding: 0; margin-top: 0.5em; max-height: 150px; overflow-y: auto; background: #fff; border: 1px solid #ccc; position: absolute; z-index: 1000; width: 250px; display: none;"></ul>
+      <button onclick="clearSearch()">Clear</button>
+    </div>
+
+    <h2>👥 Registered Employees</h2>
+
+    <div class="table-wrapper" id="employeeTableWrapper">
+      <table id="employeeTable" border="1">
+        <thead>
+          <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Face ID</th>
+            <th>Created At</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <h2 id="logsHeader" style="display:none;">📜 Attendance Logs</h2>
+    <button id="toggleLogsBtn" style="margin-top: 10px;">👁️ Toggle Logs View</button>
+    <div id="logsContainer" style="display:none;" class="table-wrapper">
+      <table id="logsTable" border="1">
+        <thead>
+          <tr>
+            <th>Timestamp (IST)</th>
+            <th>Timestamp (UTC)</th>
+            <th>Address</th>
+            <th>Pincode</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <h2>📊 Attendance Summary</h2>
+    <ul id="topAttendanceStats"></ul>
+
+    <div id="employeeAnalyticsPanel" style="display:none;">
+      <h3>📊 Analytics</h3>
+      <div id="employeeStats"></div>
+      <div id="heatmapContainer"></div>
+      <div id="adminLeaderboard"></div>
+    </div>
+    
+    <button id="showAnalyticsBtn">📊 Admin logs </button>
+    <div id="analyticsPanel" style="display:none; margin-top:20px; padding:15px; border:1px solid #ccc; border-radius:10px;">
+      <h3>Admin Activity Logs</h3>
+      <div id="analyticsContent">Loading...</div>
+    </div>
+
+    <div class="footer">
+      <div id="userInfo"></div>
+      <button id="logoutBtn">🚪 Logout</button>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
+
